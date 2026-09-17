@@ -34,10 +34,10 @@ export default function RawDataViewer() {
 
   const categories = [
     { id: 'all', label: 'All Ingested Records', count: records.length, icon: Database },
-    { id: 'meeting_transcript', label: 'Meeting Transcript', count: stats?.by_type?.meeting_transcript || 0, icon: FileText },
-    { id: 'email', label: 'Email Threads', count: stats?.by_type?.email || 0, icon: Mail },
-    { id: 'calendar_event', label: 'Calendar Records', count: stats?.by_type?.calendar_event || 0, icon: Calendar },
-    { id: 'voice_note_transcript', label: 'Voice Notes', count: stats?.by_type?.voice_note_transcript || 0, icon: Mic },
+    { id: 'meeting_transcript', label: 'Meeting Transcript', count: stats?.by_source_type?.meeting_transcript || 0, icon: FileText },
+    { id: 'email', label: 'Email Threads', count: stats?.by_source_type?.email || 0, icon: Mail },
+    { id: 'calendar', label: 'Calendar Records', count: stats?.by_source_type?.calendar || 0, icon: Calendar },
+    { id: 'voice_note', label: 'Voice Notes', count: stats?.by_source_type?.voice_note || 0, icon: Mic },
   ];
 
   return (
@@ -92,21 +92,28 @@ export default function RawDataViewer() {
                     {rec.metadata.subject}
                   </div>
                 )}
+                {rec.metadata?.meeting_title && (
+                  <div style={{ fontWeight: 600, fontSize: '14px', color: '#f8fafc', marginTop: '4px' }}>
+                    {rec.metadata.meeting_title}
+                  </div>
+                )}
               </div>
               <div style={{ fontSize: '11px', color: '#64748b', fontFamily: 'var(--font-mono)' }}>
-                {rec.date || rec.metadata?.timestamp || 'Date unrecorded'}
+                {rec.timestamp || rec.metadata?.date || rec.date || 'Date unrecorded'}
               </div>
             </div>
 
             <div style={{ fontSize: '13px', color: '#cbd5e1', lineHeight: 1.6, background: 'rgba(0,0,0,0.25)', padding: '12px', borderRadius: '6px', borderLeft: '3px solid #6366f1' }}>
-              "{rec.text}"
+              {rec.content || rec.text || '--'}
             </div>
 
-            <div style={{ display: 'flex', gap: '16px', marginTop: '10px', fontSize: '11px', color: '#94a3b8' }}>
-              {rec.metadata?.sender && <span>Sender: <strong>{rec.metadata.sender}</strong></span>}
-              {rec.metadata?.recipient && <span>Recipient: <strong>{rec.metadata.recipient}</strong></span>}
+            <div style={{ display: 'flex', gap: '16px', marginTop: '10px', fontSize: '11px', color: '#94a3b8', flexWrap: 'wrap' }}>
+              {rec.from && <span>From: <strong>{rec.from}</strong></span>}
+              {rec.to && rec.to.length > 0 && <span>To: <strong>{rec.to.join(', ')}</strong></span>}
               {rec.metadata?.speaker && <span>Speaker: <strong>{rec.metadata.speaker}</strong></span>}
-              {rec.metadata?.turn && <span>Turn #{rec.metadata.turn}</span>}
+              {rec.metadata?.turn_index && <span>Turn #{rec.metadata.turn_index}</span>}
+              {rec.metadata?.person && <span>Calendar for: <strong>{rec.metadata.person}</strong></span>}
+              {rec.metadata?.event_type && <span>Type: <strong>{rec.metadata.event_type}</strong></span>}
               {rec.metadata?.location && <span>Location: {rec.metadata.location}</span>}
             </div>
           </div>

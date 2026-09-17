@@ -285,6 +285,45 @@ console.log("================================================================");
 }
 
 console.log("\n================================================================");
+console.log("SUITE 8: HIGH-001 Regression: Calendar Attendance Events (c_007)");
+console.log("================================================================");
+{
+  const c007_raw = require("./src/data/sample/commitments_extracted.json").commitments.find(c => c.commitment_id === "c_007");
+
+  // 1. Before the meeting: Wednesday 2026-09-23 -> upcoming
+  const c007_on_23 = svc.getById("c_007", "2026-09-23");
+  assert(c007_on_23.computed_status === "upcoming", "c_007 on Wed 23 Sep (day before meeting) is upcoming");
+  assert(c007_on_23.days_until_due === 1, "c_007 on Wed 23 Sep has days_until_due: 1");
+  assert(c007_on_23.days_overdue === null, "c_007 on Wed 23 Sep has days_overdue: null");
+
+  // 2. Morning of the meeting before start time: Thursday 2026-09-24 at 08:00 AM -> due_today & actionable
+  const c007_on_24_morning = svc.getById("c_007", "2026-09-24", "08:00");
+  assert(c007_on_24_morning.computed_status === "due_today", "c_007 on Thu 24 Sep at 08:00 AM is due_today");
+  assert(c007_on_24_morning.is_actionable === true, "c_007 on Thu 24 Sep at 08:00 AM is actionable");
+  assert(c007_on_24_morning.days_until_due === 0, "c_007 on Thu 24 Sep at 08:00 AM has days_until_due: 0");
+
+  // 3. After the meeting on the same day: Thursday 2026-09-24 at 18:00 EOD -> past_event (not overdue, not actionable)
+  const c007_on_24_eod = svc.getById("c_007", "2026-09-24", "18:00");
+  assert(c007_on_24_eod.computed_status === "past_event", "c_007 on Thu 24 Sep at 18:00 EOD evaluates as past_event");
+  assert(c007_on_24_eod.days_overdue === null, "c_007 on Thu 24 Sep at 18:00 EOD is NEVER marked overdue");
+  assert(c007_on_24_eod.is_actionable === false, "c_007 on Thu 24 Sep at 18:00 EOD is NOT actionable");
+
+  // 4. Day after the meeting: Friday 2026-09-25 -> past_event (never marked overdue)
+  const c007_on_25 = svc.getById("c_007", "2026-09-25");
+  assert(c007_on_25.computed_status === "past_event", "c_007 on Fri 25 Sep evaluates as past_event");
+  assert(c007_on_25.days_overdue === null, "c_007 on Fri 25 Sep is NEVER marked overdue");
+  assert(c007_on_25.is_actionable === false, "c_007 on Fri 25 Sep is NOT actionable");
+  assert(c007_raw.evidence[0].source_type === "calendar", "c_007 preserves original source_type: calendar");
+  assert(c007_raw.source_ids.join(",") === "cal_arjun_8,cal_divya_6", "c_007 preserves calendar source evidence IDs");
+
+  // 5. Ordinary deliverable commitments with passed deadlines remain overdue (not affected by calendar logic)
+  const c002_on_25 = svc.getById("c_002", "2026-09-25");
+  assert(c002_on_25.computed_status === "overdue", "Ordinary commitment c_002 on Fri 25 Sep is overdue");
+  assert(c002_on_25.days_overdue === 1, "Ordinary commitment c_002 on Fri 25 Sep has days_overdue: 1");
+  assert(c002_on_25.is_actionable === true, "Ordinary commitment c_002 on Fri 25 Sep is actionable");
+}
+
+console.log("\n================================================================");
 console.log(`TEST RESULTS: ${passedTests} / ${totalTests} TESTS PASSED (${Math.round((passedTests / totalTests) * 100)}%)`);
 console.log("================================================================");
 

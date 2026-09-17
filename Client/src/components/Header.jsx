@@ -12,10 +12,11 @@ export default function Header({
   const [copied, setCopied] = React.useState(false);
 
   const dates = [
+    { value: '2026-09-21', label: 'Mon, 21 Sep 2026 (Leadership Sync)' },
     { value: '2026-09-22', label: 'Tue, 22 Sep 2026 (Meeting Day)' },
-    { value: '2026-09-23', label: 'Wed, 23 Sep 2026 (Demo Default)' },
-    { value: '2026-09-24', label: 'Thu, 24 Sep 2026 (Review Morning)' },
-    { value: '2026-09-25', label: 'Fri, 25 Sep 2026 (Lease Deadline)' },
+    { value: '2026-09-23', label: 'Wed, 23 Sep 2026 (Vendor Overdue / Demo Default)' },
+    { value: '2026-09-24', label: 'Thu, 24 Sep 2026 (Board Prep Morning)' },
+    { value: '2026-09-25', label: 'Fri, 25 Sep 2026 (Mumbai Lease Due)' },
   ];
 
   return (

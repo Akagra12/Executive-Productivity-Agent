@@ -74,6 +74,18 @@ export default function App() {
   const grouped = classifiedData?.grouped || {};
   const allClassified = classifiedData?.all_classified || [];
 
+  // Keep selectedCommitment in sync with refreshed data when date changes
+  useEffect(() => {
+    if (selectedCommitment && allClassified.length > 0) {
+      const refreshed = allClassified.find(
+        (c) => c.commitment_id === selectedCommitment.commitment_id
+      );
+      if (refreshed) {
+        setSelectedCommitment(refreshed);
+      }
+    }
+  }, [classifiedData]);
+
   // Filter list based on active tab
   let currentList = [];
   if (activeTab === 'my_actions') {
@@ -85,7 +97,9 @@ export default function App() {
   } else if (activeTab === 'completed') {
     currentList = grouped.completed || [];
   } else if (activeTab === 'overdue') {
-    currentList = (grouped.my_action || []).filter((c) => c.computed_status === 'overdue');
+    currentList = allClassified.filter(
+      (c) => c.computed_status === 'overdue' || (c.days_overdue && c.days_overdue > 0) || c.deadline_urgency === 'overdue'
+    );
   } else if (activeTab === 'all') {
     currentList = allClassified;
   }

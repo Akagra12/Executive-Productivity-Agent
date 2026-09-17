@@ -29,8 +29,10 @@ export default function CommitmentCard({ commitment, onClick, isSelected }) {
   } = commitment;
 
   // Determine badge styling
-  const isOverdue = computed_status === 'overdue' || (days_overdue && days_overdue > 0);
-  const isDueToday = computed_status === 'due_today';
+  const isOverdue = computed_status === 'overdue' || commitment.deadline_urgency === 'overdue' || (days_overdue && days_overdue > 0);
+  const isDueToday = computed_status === 'due_today' || commitment.deadline_urgency === 'due_today';
+  const isPastEvent = computed_status === 'past_event' || commitment.deadline_urgency === 'past_event';
+  const isUpcoming = computed_status === 'upcoming' || commitment.deadline_urgency === 'upcoming';
   const isCompleted = status === 'resolved' || classification?.label === 'completed';
   const isUnclear = status === 'unclear_ownership' || classification?.label === 'unclear_ownership';
 
@@ -55,6 +57,18 @@ export default function CommitmentCard({ commitment, onClick, isSelected }) {
           {isDueToday && (
             <span className="badge badge-my-action" style={{ background: 'rgba(245, 158, 11, 0.2)', color: '#fbbf24', borderColor: 'rgba(245, 158, 11, 0.5)' }}>
               <Clock size={12} /> Due Today
+            </span>
+          )}
+
+          {isPastEvent && (
+            <span className="badge badge-completed" style={{ background: 'rgba(148, 163, 184, 0.15)', color: '#94a3b8', borderColor: 'rgba(148, 163, 184, 0.3)' }}>
+              <CheckCircle2 size={12} /> Past Event
+            </span>
+          )}
+
+          {isUpcoming && !isDueToday && !isOverdue && (
+            <span className="badge" style={{ background: 'rgba(99, 102, 241, 0.15)', color: '#818cf8', borderColor: 'rgba(99, 102, 241, 0.3)' }}>
+              <Calendar size={12} /> Upcoming
             </span>
           )}
 
