@@ -1,0 +1,67 @@
+{
+  "_source": "Assignment 1 Data Pack — Calendars, Section 2. Week of 21–25 September 2026.",
+  "_note": "PDF renders calendar as 3 separate columns (Day/Date, Time, Event) with a page break between them. Entries paired from raw text extraction. 'Blocked' entries preserved as-is — they indicate unavailability, not tasks. No events invented.",
+  "week": "2026-09-21 to 2026-09-25",
+  "calendars": [
+    {
+      "person": "Arjun Malhotra",
+      "email": "arjun.malhotra@veridian-corp.example",
+      "entries": [
+        { "entry_id": "cal_arjun_1",  "date": "2026-09-21", "time_start": "09:00", "time_end": "09:35", "event": "Leadership Sync",             "type": "meeting"    },
+        { "entry_id": "cal_arjun_2",  "date": "2026-09-21", "time_start": "14:00", "time_end": "14:30", "event": "1:1 with Neha",               "type": "meeting"    },
+        { "entry_id": "cal_arjun_3",  "date": "2026-09-21", "time_start": "16:00", "time_end": "17:00", "event": "Blocked",                     "type": "blocked"    },
+        { "entry_id": "cal_arjun_4",  "date": "2026-09-22", "time_start": "11:00", "time_end": "12:00", "event": "Internal Budget Review",      "type": "meeting"    },
+        { "entry_id": "cal_arjun_5",  "date": "2026-09-23", "time_start": "15:00", "time_end": "15:30", "event": "Call — Meridian Logistics",   "type": "external_call" },
+        { "entry_id": "cal_arjun_6",  "date": "2026-09-23", "time_start": "15:00", "time_end": "15:30", "event": "Blocked",                     "type": "blocked"    },
+        { "entry_id": "cal_arjun_7",  "date": "2026-09-23", "time_start": "18:00", "time_end": "18:15", "event": "Blocked",                     "type": "blocked"    },
+        { "entry_id": "cal_arjun_8",  "date": "2026-09-24", "time_start": "09:00", "time_end": "10:00", "event": "Board Prep Session",          "type": "meeting"    },
+        { "entry_id": "cal_arjun_9",  "date": "2026-09-24", "time_start": "16:00", "time_end": "17:00", "event": "Hiring Panel — Sales Associate", "type": "meeting" },
+        { "entry_id": "cal_arjun_10", "date": "2026-09-25", "time_start": "10:00", "time_end": "10:30", "event": "Facilities Check-in",         "type": "meeting"    },
+        { "entry_id": "cal_arjun_11", "date": "2026-09-25", "time_start": "13:00", "time_end": "14:00", "event": "Blocked",                     "type": "blocked"    }
+      ]
+    },
+    {
+      "person": "Neha Kapoor",
+      "email": "neha.kapoor@veridian-corp.example",
+      "_note": "PDF lists 4 day rows then a page break before the Time and Event columns. Times and events paired in order from the raw extraction.",
+      "entries": [
+        { "entry_id": "cal_neha_1",  "date": "2026-09-21", "time_start": "10:00", "time_end": "11:00", "event": "Blocked",               "type": "blocked" },
+        { "entry_id": "cal_neha_2",  "date": "2026-09-21", "time_start": "14:00", "time_end": "14:30", "event": "1:1 with Arjun",        "type": "meeting" },
+        { "entry_id": "cal_neha_3",  "date": "2026-09-22", "time_start": "13:00", "time_end": "14:00", "event": "Campaign Vendor Call",  "type": "external_call" },
+        { "entry_id": "cal_neha_4",  "date": "2026-09-23", "time_start": "10:00", "time_end": "10:30", "event": "Deck Prep",             "type": "task"    },
+        { "entry_id": "cal_neha_5",  "date": "2026-09-23", "time_start": "13:00", "time_end": "15:00", "event": "Deck Review with Arjun","type": "meeting" },
+        { "entry_id": "cal_neha_6",  "date": "2026-09-24", "time_start": "09:30", "time_end": "10:00", "event": "Blocked",               "type": "blocked" },
+        { "entry_id": "cal_neha_7",  "date": "2026-09-25", "time_start": "11:00", "time_end": "12:00", "event": "Blocked",               "type": "blocked" }
+      ]
+    },
+    {
+      "person": "Raghav Sethi",
+      "email": "raghav.sethi@veridian-corp.example",
+      "_note": "PDF lists 8 day rows. Times and events paired in order from raw extraction. Fri 25 Sep has two rows but times are not clearly stated in the PDF extraction — marked as time_unknown.",
+      "entries": [
+        { "entry_id": "cal_raghav_1",  "date": "2026-09-21", "time_start": "09:00", "time_end": "09:35", "event": "Leadership Sync",        "type": "meeting" },
+        { "entry_id": "cal_raghav_2",  "date": "2026-09-21", "time_start": "13:00", "time_end": "14:00", "event": "Blocked",                "type": "blocked" },
+        { "entry_id": "cal_raghav_3",  "date": "2026-09-22", "time_start": "11:00", "time_end": "12:00", "event": "Internal Budget Review", "type": "meeting" },
+        { "entry_id": "cal_raghav_4",  "date": "2026-09-22", "time_start": "15:30", "time_end": "16:00", "event": "Ops Standup",            "type": "meeting" },
+        { "entry_id": "cal_raghav_5",  "date": "2026-09-23", "time_start": "09:00", "time_end": "11:00", "event": "Blocked",                "type": "blocked" },
+        { "entry_id": "cal_raghav_6",  "date": "2026-09-24", "time_start": "14:00", "time_end": "15:00", "event": "Blocked",                "type": "blocked" },
+        { "entry_id": "cal_raghav_7",  "date": "2026-09-25", "time_start": null,    "time_end": null,    "event": "Facilities Check-in",   "type": "meeting", "_note": "Exact time not present in PDF for this row" },
+        { "entry_id": "cal_raghav_8",  "date": "2026-09-25", "time_start": null,    "time_end": null,    "event": "Blocked",                "type": "blocked", "_note": "Exact time not present in PDF for this row" }
+      ]
+    },
+    {
+      "person": "Divya Rao",
+      "email": "divya.rao@veridian-corp.example",
+      "entries": [
+        { "entry_id": "cal_divya_1",  "date": "2026-09-21", "time_start": "14:30", "time_end": "15:00", "event": "Budget Prep",           "type": "task"    },
+        { "entry_id": "cal_divya_2",  "date": "2026-09-21", "time_start": "16:00", "time_end": "17:00", "event": "Blocked",               "type": "blocked" },
+        { "entry_id": "cal_divya_3",  "date": "2026-09-22", "time_start": "09:00", "time_end": "09:15", "event": "Quick Call with Arjun", "type": "meeting" },
+        { "entry_id": "cal_divya_4",  "date": "2026-09-22", "time_start": "11:00", "time_end": "12:00", "event": "Internal Budget Review","type": "meeting" },
+        { "entry_id": "cal_divya_5",  "date": "2026-09-23", "time_start": "13:00", "time_end": "14:00", "event": "Blocked",               "type": "blocked" },
+        { "entry_id": "cal_divya_6",  "date": "2026-09-24", "time_start": "09:00", "time_end": "10:00", "event": "Board Prep Session",    "type": "meeting" },
+        { "entry_id": "cal_divya_7",  "date": "2026-09-24", "time_start": "14:00", "time_end": "15:00", "event": "Blocked",               "type": "blocked" },
+        { "entry_id": "cal_divya_8",  "date": "2026-09-25", "time_start": "10:00", "time_end": "11:00", "event": "Blocked",               "type": "blocked" }
+      ]
+    }
+  ]
+}

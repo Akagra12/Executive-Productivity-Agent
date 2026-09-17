@@ -1,0 +1,505 @@
+{
+  "_source": "Assignment 1 Data Pack — all 4 source types. Commitments extracted by reading every source message and identifying: (a) who made a promise, (b) to whom, (c) what the deliverable is, (d) the deadline, and (e) whether it was resolved. No ownership was invented where the source is ambiguous.",
+  "_extraction_approach": "Rule-based, deterministic extraction from the 71 normalised SourceMessages. Each commitment includes a full evidence chain (source_ids + verbatim evidence texts) so any claim can be traced back to its exact source. Where a deadline evolved across messages, all versions are preserved under deadline_history and the latest supported deadline is used.",
+  "_demo_date": "2026-09-23",
+  "_note_on_demo_date": "Wednesday 23 Sep is the most revealing snapshot: the vendor list is overdue, the Mumbai lease is unowned, the Meridian call is imminent, and board prep is the next day. The agent's 'today' should be anchored to this date for demo purposes.",
+
+  "commitments": [
+
+    {
+      "commitment_id": "c_001",
+      "title": "Send updated vendor list to Raghav",
+      "description": "Arjun committed in the Monday Leadership Sync to send Raghav the updated vendor list. He said 'by end of day tomorrow' (Tuesday). He then slipped the deadline twice via email. As of Wednesday 8:45 AM the list has still not been sent.",
+      "category": "my_action",
+      "owner": "arjun.malhotra@veridian-corp.example",
+      "recipient": "raghav.sethi@veridian-corp.example",
+      "status": "overdue",
+      "deadline": {
+        "date": "2026-09-23",
+        "time_of_day": "morning",
+        "is_time_explicit": true,
+        "note": "Latest deadline supported by the source: email_t1_4 (Tue 22 Sep 6:30 PM). Two earlier deadlines were missed."
+      },
+      "deadline_history": [
+        {
+          "deadline_label": "Monday EOD (Tue 22 Sep implied as 'end of day tomorrow')",
+          "source_id": "mt_meeting_001_turn_3",
+          "verbatim": "I'll get that to him by end of day tomorrow."
+        },
+        {
+          "deadline_label": "Tuesday morning ('first thing tomorrow morning')",
+          "source_id": "email_t1_2",
+          "verbatim": "Running behind, will send first thing tomorrow morning instead."
+        },
+        {
+          "deadline_label": "Wednesday morning ('by tomorrow (Wednesday) morning for sure')",
+          "source_id": "email_t1_4",
+          "verbatim": "Sorry, got pulled into board prep — will send by tomorrow (Wednesday) morning for sure."
+        }
+      ],
+      "ownership_unclear": false,
+      "confidence_notes": "High confidence. Arjun made the commitment explicitly in three places (meeting, email_t1_2, email_t1_4). Raghav's follow-up on Wed 8:45 AM confirms it is still outstanding.",
+      "source_ids": [
+        "mt_meeting_001_turn_3",
+        "email_t1_2",
+        "email_t1_4",
+        "email_t1_5",
+        "vn_001"
+      ],
+      "evidence": [
+        {
+          "source_id": "mt_meeting_001_turn_3",
+          "source_type": "meeting_transcript",
+          "verbatim": "Good. Also, remind me — I told Raghav I'd send him the updated vendor list. I'll get that to him by end of day tomorrow."
+        },
+        {
+          "source_id": "email_t1_2",
+          "source_type": "email",
+          "thread_subject": "Vendor List",
+          "verbatim": "Running behind, will send first thing tomorrow morning instead."
+        },
+        {
+          "source_id": "email_t1_4",
+          "source_type": "email",
+          "thread_subject": "Vendor List",
+          "verbatim": "Sorry, got pulled into board prep — will send by tomorrow (Wednesday) morning for sure."
+        },
+        {
+          "source_id": "email_t1_5",
+          "source_type": "email",
+          "thread_subject": "Vendor List",
+          "verbatim": "Just checking — still good for this morning?",
+          "role": "confirmation_pending — Raghav is still waiting as of Wed 8:45 AM"
+        },
+        {
+          "source_id": "vn_001",
+          "source_type": "voice_note",
+          "verbatim": "Quick note to self — need to get Raghav that vendor list, I think I said today but it might slip to tomorrow morning, remind me."
+        }
+      ]
+    },
+
+    {
+      "commitment_id": "c_002",
+      "title": "Review Q3 Campaign Deck (Arjun's action)",
+      "description": "Arjun agreed to review the Q3 campaign deck prepared by Neha Kapoor. The review was initially planned for Wednesday, then mutually rescheduled to Thursday 9:30 AM. Neha sent the draft Thursday 8:00 AM ahead of the session.",
+      "category": "my_action",
+      "owner": "arjun.malhotra@veridian-corp.example",
+      "recipient": "neha.kapoor@veridian-corp.example",
+      "status": "pending",
+      "deadline": {
+        "date": "2026-09-24",
+        "time_of_day": "09:30",
+        "is_time_explicit": true,
+        "note": "Confirmed by both Arjun (email_t2_3) and Neha (email_t2_4). Neha sent the draft early (email_t2_5)."
+      },
+      "deadline_history": [
+        {
+          "deadline_label": "Wednesday (original)",
+          "source_id": "mt_meeting_001_turn_2",
+          "verbatim": "I'll send it to Arjun for review by Wednesday."
+        },
+        {
+          "deadline_label": "Thursday morning (revised)",
+          "source_id": "email_t2_2",
+          "verbatim": "Heads up — shifting the review to Thursday morning instead of Wednesday, need one more day on the data slides."
+        },
+        {
+          "deadline_label": "Thursday 9:30 AM (confirmed)",
+          "source_id": "email_t2_4",
+          "verbatim": "Let's say 9:30 AM Thursday, before your board prep block."
+        }
+      ],
+      "ownership_unclear": false,
+      "confidence_notes": "High confidence. Both parties confirmed Thursday 9:30 AM via email.",
+      "source_ids": [
+        "mt_meeting_001_turn_2",
+        "email_t2_2",
+        "email_t2_3",
+        "email_t2_4",
+        "email_t2_5",
+        "cal_neha_5"
+      ],
+      "evidence": [
+        {
+          "source_id": "mt_meeting_001_turn_2",
+          "source_type": "meeting_transcript",
+          "verbatim": "Draft is 80% done. I'll send it to Arjun for review by Wednesday."
+        },
+        {
+          "source_id": "email_t2_3",
+          "source_type": "email",
+          "thread_subject": "Q3 Campaign Deck",
+          "verbatim": "Understood, Thursday morning works. What time exactly?"
+        },
+        {
+          "source_id": "email_t2_4",
+          "source_type": "email",
+          "thread_subject": "Q3 Campaign Deck",
+          "verbatim": "Let's say 9:30 AM Thursday, before your board prep block."
+        },
+        {
+          "source_id": "email_t2_5",
+          "source_type": "email",
+          "thread_subject": "Q3 Campaign Deck",
+          "verbatim": "Deck is ready, attaching the draft ahead of our 9:30 review."
+        }
+      ]
+    },
+
+    {
+      "commitment_id": "c_003",
+      "title": "Neha to deliver Q3 Campaign Deck for review",
+      "description": "Neha Kapoor committed to delivering the Q3 campaign deck so Arjun can review it. This is a 'waiting on others' item from Arjun's perspective. Neha delivered the deck Thursday 8:00 AM ahead of the 9:30 AM review.",
+      "category": "waiting_on_others",
+      "owner": "neha.kapoor@veridian-corp.example",
+      "recipient": "arjun.malhotra@veridian-corp.example",
+      "status": "resolved",
+      "deadline": {
+        "date": "2026-09-24",
+        "time_of_day": "09:30",
+        "is_time_explicit": true,
+        "note": "Neha delivered at 8:00 AM Thu 24 Sep, ahead of the 9:30 AM review (email_t2_5)."
+      },
+      "deadline_history": [
+        {
+          "deadline_label": "Wednesday (original)",
+          "source_id": "mt_meeting_001_turn_2",
+          "verbatim": "I'll send it to Arjun for review by Wednesday."
+        },
+        {
+          "deadline_label": "Thursday morning (revised)",
+          "source_id": "email_t2_2",
+          "verbatim": "Shifting the review to Thursday morning instead of Wednesday."
+        }
+      ],
+      "resolved_evidence": {
+        "source_id": "email_t2_5",
+        "verbatim": "Deck is ready, attaching the draft ahead of our 9:30 review.",
+        "resolved_at": "2026-09-24T08:00:00+05:30"
+      },
+      "ownership_unclear": false,
+      "confidence_notes": "Fully resolved. Neha delivered the deck one hour ahead of schedule.",
+      "source_ids": [
+        "mt_meeting_001_turn_2",
+        "email_t2_1",
+        "email_t2_2",
+        "email_t2_5"
+      ],
+      "evidence": [
+        {
+          "source_id": "mt_meeting_001_turn_2",
+          "source_type": "meeting_transcript",
+          "verbatim": "Draft is 80% done. I'll send it to Arjun for review by Wednesday."
+        },
+        {
+          "source_id": "email_t2_1",
+          "source_type": "email",
+          "thread_subject": "Q3 Campaign Deck",
+          "verbatim": "Deck's coming together, still targeting Wednesday for your review."
+        },
+        {
+          "source_id": "email_t2_5",
+          "source_type": "email",
+          "thread_subject": "Q3 Campaign Deck",
+          "verbatim": "Deck is ready, attaching the draft ahead of our 9:30 review.",
+          "role": "resolution_confirmation"
+        }
+      ]
+    },
+
+    {
+      "commitment_id": "c_004",
+      "title": "Mumbai office lease renewal — needs authorized signature",
+      "description": "The Mumbai office lease renewal requires an authorized signature by Friday 25 September EOD. As of Thursday 24 Sep the owner of this task is still unresolved. Raghav asked in the meeting and via email; Divya declined ownership; Facilities issued two reminders. No one has been confirmed as the signer.",
+      "category": "unclear_ownership",
+      "owner": null,
+      "recipient": null,
+      "status": "unclear_ownership",
+      "deadline": {
+        "date": "2026-09-25",
+        "time_of_day": "EOD",
+        "is_time_explicit": true,
+        "note": "Confirmed by two separate Facilities reminders (email_t5_1 and email_t5_4)."
+      },
+      "deadline_history": [
+        {
+          "deadline_label": "Friday 25 September (first reminder)",
+          "source_id": "email_t5_1",
+          "verbatim": "Reminder: the Mumbai office lease renewal requires an authorized signature by Friday, 25 September."
+        },
+        {
+          "deadline_label": "Friday 25 September EOD (second reminder)",
+          "source_id": "email_t5_4",
+          "verbatim": "Second reminder: signature is still pending. Deadline is Friday, 25 September, end of day."
+        }
+      ],
+      "ownership_unclear": true,
+      "ownership_notes": "Raghav flagged it in the Leadership Sync and via email (email_t5_2, email_t5_5). Divya declined (email_t5_3: 'Not on my end'). Arjun's voice note says 'I don't think it's me' (vn_001). No one has been assigned.",
+      "confidence_notes": "Deadline is certain (confirmed twice by Facilities). Owner is explicitly unresolved in the source data. Agent must flag — not assign.",
+      "source_ids": [
+        "mt_meeting_001_turn_4",
+        "mt_meeting_001_turn_5",
+        "mt_meeting_001_turn_6",
+        "email_t5_1",
+        "email_t5_2",
+        "email_t5_3",
+        "email_t5_4",
+        "email_t5_5",
+        "vn_001"
+      ],
+      "evidence": [
+        {
+          "source_id": "mt_meeting_001_turn_4",
+          "source_type": "meeting_transcript",
+          "verbatim": "Separately, the Mumbai office renewal paperwork needs someone to sign off this week. Not sure whose desk that's on right now."
+        },
+        {
+          "source_id": "mt_meeting_001_turn_5",
+          "source_type": "meeting_transcript",
+          "verbatim": "I think that's supposed to be Facilities, but I haven't seen anyone pick it up."
+        },
+        {
+          "source_id": "mt_meeting_001_turn_6",
+          "source_type": "meeting_transcript",
+          "verbatim": "Okay, flag it, don't assume."
+        },
+        {
+          "source_id": "email_t5_1",
+          "source_type": "email",
+          "thread_subject": "Mumbai Office Lease Renewal",
+          "verbatim": "Reminder: the Mumbai office lease renewal requires an authorized signature by Friday, 25 September."
+        },
+        {
+          "source_id": "email_t5_2",
+          "source_type": "email",
+          "thread_subject": "Mumbai Office Lease Renewal",
+          "verbatim": "Following up from the sync — has anyone confirmed who's signing off on the Mumbai renewal? Don't think it's been assigned."
+        },
+        {
+          "source_id": "email_t5_3",
+          "source_type": "email",
+          "thread_subject": "Mumbai Office Lease Renewal",
+          "verbatim": "Not on my end — I believe this typically sits with Facilities directly, not us."
+        },
+        {
+          "source_id": "email_t5_4",
+          "source_type": "email",
+          "thread_subject": "Mumbai Office Lease Renewal",
+          "verbatim": "Second reminder: signature is still pending. Deadline is Friday, 25 September, end of day."
+        },
+        {
+          "source_id": "email_t5_5",
+          "source_type": "email",
+          "thread_subject": "Mumbai Office Lease Renewal",
+          "verbatim": "This is now one day out and still unowned — can you confirm who's handling it?"
+        },
+        {
+          "source_id": "vn_001",
+          "source_type": "voice_note",
+          "verbatim": "Also still haven't heard back on the Mumbai lease thing, someone needs to own that, I don't think it's me."
+        }
+      ]
+    },
+
+    {
+      "commitment_id": "c_005",
+      "title": "Divya to deliver July expense variance report",
+      "description": "Divya Rao agreed to deliver the July expense variance report to Arjun. Original deadline was Thursday morning (meeting), Arjun requested Wednesday evening instead, Divya agreed. Divya delivered on time Wednesday 6:00 PM and Arjun confirmed receipt.",
+      "category": "waiting_on_others",
+      "owner": "divya.rao@veridian-corp.example",
+      "recipient": "arjun.malhotra@veridian-corp.example",
+      "status": "resolved",
+      "deadline": {
+        "date": "2026-09-23",
+        "time_of_day": "evening",
+        "is_time_explicit": false,
+        "note": "Arjun requested 'Wednesday evening' (email_t4_2); Divya agreed (email_t4_3); delivered Wed 6:00 PM (email_t4_4)."
+      },
+      "deadline_history": [
+        {
+          "deadline_label": "Thursday morning (original)",
+          "source_id": "mt_meeting_001_turn_7",
+          "verbatim": "Yes, I'll have it ready Wednesday evening."
+        },
+        {
+          "deadline_label": "Wednesday evening (Arjun's revised request)",
+          "source_id": "email_t4_2",
+          "verbatim": "Actually, can I get it by Wednesday evening instead? Want time to review before Thursday."
+        },
+        {
+          "deadline_label": "Wednesday evening (Divya confirmed)",
+          "source_id": "email_t4_3",
+          "verbatim": "Wednesday evening is tight but doable, I'll prioritize it."
+        }
+      ],
+      "resolved_evidence": {
+        "source_id": "email_t4_4",
+        "verbatim": "Report attached, sent as promised.",
+        "resolved_at": "2026-09-23T18:00:00+05:30"
+      },
+      "ownership_unclear": false,
+      "confidence_notes": "Fully resolved. Arjun confirmed receipt at 6:10 PM (email_t4_5: 'Got it, thank you'). Voice Note 2 (vn_002) references this item as still pending — but vn_002 was recorded at 8:15 AM Wed, before the report was delivered at 6:00 PM. Not a conflict.",
+      "source_ids": [
+        "mt_meeting_001_turn_7",
+        "email_t4_1",
+        "email_t4_2",
+        "email_t4_3",
+        "email_t4_4",
+        "email_t4_5",
+        "vn_002"
+      ],
+      "evidence": [
+        {
+          "source_id": "mt_meeting_001_turn_7",
+          "source_type": "meeting_transcript",
+          "verbatim": "Yes, I'll have it ready Wednesday evening."
+        },
+        {
+          "source_id": "email_t4_2",
+          "source_type": "email",
+          "thread_subject": "Expense Variance Report",
+          "verbatim": "Actually, can I get it by Wednesday evening instead? Want time to review before Thursday."
+        },
+        {
+          "source_id": "email_t4_3",
+          "source_type": "email",
+          "thread_subject": "Expense Variance Report",
+          "verbatim": "Wednesday evening is tight but doable, I'll prioritize it."
+        },
+        {
+          "source_id": "email_t4_4",
+          "source_type": "email",
+          "thread_subject": "Expense Variance Report",
+          "verbatim": "Report attached, sent as promised.",
+          "role": "resolution_confirmation"
+        },
+        {
+          "source_id": "email_t4_5",
+          "source_type": "email",
+          "thread_subject": "Expense Variance Report",
+          "verbatim": "Got it, thank you — exactly what I needed before tomorrow.",
+          "role": "receipt_confirmation"
+        },
+        {
+          "source_id": "vn_002",
+          "source_type": "voice_note",
+          "verbatim": "Expense variance report from Divya needs to be in my hands by Wednesday evening, not Thursday.",
+          "role": "stale_at_time_of_extraction — recorded at 8:15 AM Wed, before 6:00 PM delivery"
+        }
+      ]
+    },
+
+    {
+      "commitment_id": "c_006",
+      "title": "Arjun to reconfirm Meridian Logistics call time with Priya",
+      "description": "In the Leadership Sync Arjun said he needed to reconfirm the new call time with Meridian Logistics himself. He proposed Wednesday 3:00 PM by email the next day. Priya confirmed. The call happened on schedule.",
+      "category": "my_action",
+      "owner": "arjun.malhotra@veridian-corp.example",
+      "recipient": "priya.nair@meridianlogistics.example",
+      "status": "resolved",
+      "deadline": {
+        "date": "2026-09-23",
+        "time_of_day": "15:00",
+        "is_time_explicit": true,
+        "note": "Call confirmed for Wednesday 3:00 PM. Both parties confirmed on the day."
+      },
+      "deadline_history": [
+        {
+          "deadline_label": "Arjun to propose a new time (no deadline stated)",
+          "source_id": "mt_meeting_001_turn_8",
+          "verbatim": "I need to reconfirm the new time with their team myself."
+        },
+        {
+          "deadline_label": "Wednesday 3:00 PM (Arjun proposed)",
+          "source_id": "email_t3_2",
+          "verbatim": "Apologies for the delay — how about Wednesday 3:00 PM?"
+        },
+        {
+          "deadline_label": "Wednesday 3:00 PM (Priya confirmed)",
+          "source_id": "email_t3_3",
+          "verbatim": "Wednesday 3 PM works on our end, confirmed."
+        }
+      ],
+      "resolved_evidence": {
+        "source_id": "email_t3_5",
+        "verbatim": "Yes, confirmed, see you at 3.",
+        "resolved_at": "2026-09-23T14:00:00+05:30"
+      },
+      "ownership_unclear": false,
+      "confidence_notes": "Fully resolved. Arjun proposed and confirmed the time. Voice Note 2 (vn_002) says 'I owe Priya a time, need to lock that in today' — recorded Wed 8:15 AM, before the email exchange that locked it in (email_t3_2 sent Tue 22 Sep, vn_002 appears unaware of it). This is a voice-note lag — the commitment was already resolved by the email thread before the voice note was recorded. No conflict in facts.",
+      "source_ids": [
+        "mt_meeting_001_turn_8",
+        "email_t3_1",
+        "email_t3_2",
+        "email_t3_3",
+        "email_t3_4",
+        "email_t3_5",
+        "vn_002",
+        "cal_arjun_5"
+      ],
+      "evidence": [
+        {
+          "source_id": "mt_meeting_001_turn_8",
+          "source_type": "meeting_transcript",
+          "verbatim": "One more thing — client call with Meridian Logistics got pushed. I need to reconfirm the new time with their team myself."
+        },
+        {
+          "source_id": "email_t3_2",
+          "source_type": "email",
+          "thread_subject": "Call Reschedule",
+          "verbatim": "Apologies for the delay — how about Wednesday 3:00 PM?"
+        },
+        {
+          "source_id": "email_t3_5",
+          "source_type": "email",
+          "thread_subject": "Call Reschedule",
+          "verbatim": "Yes, confirmed, see you at 3.",
+          "role": "resolution_confirmation"
+        },
+        {
+          "source_id": "vn_002",
+          "source_type": "voice_note",
+          "verbatim": "Also Meridian call — I owe Priya a time, need to lock that in today.",
+          "role": "stale_at_time_of_extraction — recorded Wed 8:15 AM; Arjun had already proposed Wed 3PM via email on Tue 22 Sep"
+        }
+      ]
+    },
+
+    {
+      "commitment_id": "c_007",
+      "title": "Board Prep Session — Arjun on calendar",
+      "description": "Arjun has a Board Prep Session on Thursday 24 September 9:00–10:00 AM on his calendar. Divya also has the same session on her calendar. This is a calendar commitment — no separate deliverable, just attendance.",
+      "category": "my_action",
+      "owner": "arjun.malhotra@veridian-corp.example",
+      "recipient": null,
+      "status": "pending",
+      "deadline": {
+        "date": "2026-09-24",
+        "time_of_day": "09:00",
+        "is_time_explicit": true,
+        "note": "Calendar block confirmed for Arjun (cal_arjun_8) and Divya (cal_divya_6)."
+      },
+      "deadline_history": [],
+      "ownership_unclear": false,
+      "confidence_notes": "Low complexity — purely a calendar attendance item. Referenced as the context for why the deck review and variance report deadlines were tightened.",
+      "source_ids": [
+        "cal_arjun_8",
+        "cal_divya_6"
+      ],
+      "evidence": [
+        {
+          "source_id": "cal_arjun_8",
+          "source_type": "calendar",
+          "verbatim": "[Calendar — Arjun Malhotra] 2026-09-24 09:00: Board Prep Session"
+        },
+        {
+          "source_id": "cal_divya_6",
+          "source_type": "calendar",
+          "verbatim": "[Calendar — Divya Rao] 2026-09-24 09:00: Board Prep Session"
+        }
+      ]
+    }
+
+  ]
+}

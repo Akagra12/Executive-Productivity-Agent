@@ -1,0 +1,24 @@
+{
+  "_source": "Assignment 1 Data Pack — Voice Note Transcripts, Section 4. Verbatim from PDF.",
+  "_note": "Both notes are personal voice memos recorded by Arjun Malhotra for himself — dictated reminders, not messages sent to anyone else. Treat the same as Arjun's own meeting statements: as a source of his commitments and open items, not as instructions from someone else.",
+  "voice_notes": [
+    {
+      "note_id": "vn_001",
+      "recorded_by": "arjun.malhotra@veridian-corp.example",
+      "date": "2026-09-21",
+      "time": "18:40",
+      "timezone": "Asia/Kolkata",
+      "context": "recorded in cab",
+      "transcript": "Quick note to self — need to get Raghav that vendor list, I think I said today but it might slip to tomorrow morning, remind me. Also still haven't heard back on the Mumbai lease thing, someone needs to own that, I don't think it's me."
+    },
+    {
+      "note_id": "vn_002",
+      "recorded_by": "arjun.malhotra@veridian-corp.example",
+      "date": "2026-09-23",
+      "time": "08:15",
+      "timezone": "Asia/Kolkata",
+      "context": null,
+      "transcript": "Reminder — expense variance report from Divya needs to be in my hands by Wednesday evening, not Thursday, I want time to go through it before board prep. Also Meridian call — I owe Priya a time, need to lock that in today."
+    }
+  ]
+}

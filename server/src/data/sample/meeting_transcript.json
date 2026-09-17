@@ -1,0 +1,58 @@
+{
+  "_source": "Assignment 1 Data Pack — Meeting Transcript, Section 1",
+  "_note": "Leadership Sync, Monday 21 September 2026, 9:00–9:35 AM. Verbatim from PDF.",
+  "meeting_id": "meeting_001",
+  "title": "Leadership Sync",
+  "date": "2026-09-21",
+  "start_time": "09:00",
+  "end_time": "09:35",
+  "timezone": "Asia/Kolkata",
+  "attendees": [
+    { "name": "Arjun Malhotra", "email": "arjun.malhotra@veridian-corp.example", "role": "VP Sales" },
+    { "name": "Neha Kapoor",    "email": "neha.kapoor@veridian-corp.example",    "role": "Marketing Lead" },
+    { "name": "Raghav Sethi",   "email": "raghav.sethi@veridian-corp.example",   "role": "Ops Manager" },
+    { "name": "Divya Rao",      "email": "divya.rao@veridian-corp.example",      "role": "Finance" }
+  ],
+  "transcript": [
+    {
+      "speaker": "Arjun",
+      "text": "Let's keep this quick. Neha, where are we on the Q3 campaign deck?"
+    },
+    {
+      "speaker": "Neha",
+      "text": "Draft is 80% done. I'll send it to Arjun for review by Wednesday."
+    },
+    {
+      "speaker": "Arjun",
+      "text": "Good. Also, remind me — I told Raghav I'd send him the updated vendor list. I'll get that to him by end of day tomorrow."
+    },
+    {
+      "speaker": "Raghav",
+      "text": "Appreciated. Separately, the Mumbai office renewal paperwork needs someone to sign off this week. Not sure whose desk that's on right now."
+    },
+    {
+      "speaker": "Divya",
+      "text": "I think that's supposed to be Facilities, but I haven't seen anyone pick it up."
+    },
+    {
+      "speaker": "Arjun",
+      "text": "Okay, flag it, don't assume. Divya, can you also pull the July expense variance report before Thursday's board prep?"
+    },
+    {
+      "speaker": "Divya",
+      "text": "Yes, I'll have it ready Wednesday evening."
+    },
+    {
+      "speaker": "Arjun",
+      "text": "One more thing — client call with Meridian Logistics got pushed. I need to reconfirm the new time with their team myself."
+    },
+    {
+      "speaker": "Neha",
+      "text": "Also, just a reminder, the campaign deck review — I said Wednesday, but realistically Thursday morning is safer."
+    },
+    {
+      "speaker": "Arjun",
+      "text": "Noted. Let's close here."
+    }
+  ]
+}

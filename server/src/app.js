@@ -12,7 +12,13 @@ const express = require("express");
 const cors = require("cors");
 
 // Import routes
-const healthRouter = require("./routes/health");
+const healthRouter      = require("./routes/health");
+const ingestRouter      = require("./routes/ingest");
+const commitmentsRouter = require("./routes/commitments");
+const deduplicateRouter = require("./routes/deduplicate");
+const briefRouter       = require("./routes/brief");
+const queryRouter       = require("./routes/query");
+const chatRouter        = require("./routes/chat");
 
 const app = express();
 
@@ -42,7 +48,15 @@ app.use(express.json({ limit: "2mb" }));
 // ── Routes ──────────────────────────────────────────────────────────────────
 
 // All agent API routes live under /api
-app.use("/api/health", healthRouter);
+app.use("/api/health",      healthRouter);
+app.use("/api/ingest",      ingestRouter);
+app.use("/api/commitments", commitmentsRouter);
+app.use("/api/deduplicate", deduplicateRouter);
+app.use("/api/brief",       briefRouter);
+app.use("/api/query",       queryRouter);
+app.use("/api/chat",        chatRouter);
+
+
 
 // ── 404 catch-all ───────────────────────────────────────────────────────────
 // Catches any request that didn't match a registered route

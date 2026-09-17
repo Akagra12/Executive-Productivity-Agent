@@ -1,0 +1,204 @@
+{
+  "_purpose": "Synthetic test fixtures for the deduplication engine. Not from the data pack — these are purpose-built scenarios to verify the deduplicator's three tiers (auto-merged, flagged, not-duplicate) and its safety constraints.",
+
+  "test_cases": [
+
+    {
+      "test_id": "TC-01",
+      "label": "TRUE_DUPLICATE — same task, different source types",
+      "expected_tier": "HIGH_CONFIDENCE",
+      "expected_action": "auto_merged",
+      "rationale": "Both commitments have the same owner, same recipient, highly overlapping action keywords, and the same deadline. This is the canonical duplicate scenario: the same promise surfaced from a meeting transcript and then again from an email thread.",
+      "commitments": [
+        {
+          "commitment_id": "tc01_A",
+          "title": "Send updated vendor list to Raghav",
+          "description": "Arjun will send the updated vendor list to Raghav today.",
+          "owner": "arjun.malhotra@veridian-corp.example",
+          "recipient": "raghav.sethi@veridian-corp.example",
+          "status": "pending",
+          "deadline": { "date": "2026-09-22", "time_of_day": "morning" },
+          "source_ids": ["mt_meeting_001_turn_3"],
+          "evidence": [{ "source_id": "mt_meeting_001_turn_3", "source_type": "meeting_transcript", "verbatim": "I'll get that to him by end of day tomorrow." }],
+          "deadline_history": []
+        },
+        {
+          "commitment_id": "tc01_B",
+          "title": "Send vendor list to raghav — first thing tomorrow morning",
+          "description": "Arjun promised to send the updated vendor list to Raghav first thing Tuesday morning.",
+          "owner": "arjun.malhotra@veridian-corp.example",
+          "recipient": "raghav.sethi@veridian-corp.example",
+          "status": "pending",
+          "deadline": { "date": "2026-09-22", "time_of_day": "morning" },
+          "source_ids": ["email_t1_2"],
+          "evidence": [{ "source_id": "email_t1_2", "source_type": "email", "verbatim": "Running behind, will send first thing tomorrow morning instead." }],
+          "deadline_history": []
+        }
+      ],
+      "assertions": {
+        "score_gte": 0.70,
+        "merged_source_ids": ["mt_meeting_001_turn_3", "email_t1_2"],
+        "merged_commitment_id": "tc01_A"
+      }
+    },
+
+    {
+      "test_id": "TC-02",
+      "label": "NOT_DUPLICATE — same artifact, different owners and roles",
+      "expected_tier": "NOT_DUPLICATE",
+      "expected_action": "kept_separate",
+      "rationale": "Both commitments are about the Q3 Campaign Deck, so keyword overlap is high. BUT the owner is different: c_002 is Arjun reviewing the deck; c_003 is Neha preparing it. Zero owner match, zero recipient match. These are two sides of the same interaction, not the same task.",
+      "commitments": [
+        {
+          "commitment_id": "tc02_A",
+          "title": "Review Q3 Campaign Deck",
+          "description": "Arjun must review the Q3 campaign deck prepared by Neha on Thursday 9:30 AM.",
+          "owner": "arjun.malhotra@veridian-corp.example",
+          "recipient": "neha.kapoor@veridian-corp.example",
+          "status": "pending",
+          "deadline": { "date": "2026-09-24", "time_of_day": "09:30" },
+          "source_ids": ["email_t2_3"],
+          "evidence": [{ "source_id": "email_t2_3", "source_type": "email", "verbatim": "Understood, Thursday morning works." }],
+          "deadline_history": []
+        },
+        {
+          "commitment_id": "tc02_B",
+          "title": "Neha to deliver Q3 Campaign Deck for review",
+          "description": "Neha must prepare and deliver the Q3 campaign deck to Arjun before the Thursday 9:30 AM review.",
+          "owner": "neha.kapoor@veridian-corp.example",
+          "recipient": "arjun.malhotra@veridian-corp.example",
+          "status": "resolved",
+          "deadline": { "date": "2026-09-24", "time_of_day": "09:30" },
+          "source_ids": ["email_t2_5"],
+          "evidence": [{ "source_id": "email_t2_5", "source_type": "email", "verbatim": "Deck is ready, attaching the draft ahead of our 9:30 review." }],
+          "deadline_history": []
+        }
+      ],
+      "assertions": {
+        "score_lt": 0.40,
+        "output_count": 2
+      }
+    },
+
+    {
+      "test_id": "TC-03",
+      "label": "UNCERTAIN — same recipient, overlapping words, but different owners and deliverables",
+      "expected_tier": "UNCERTAIN",
+      "expected_action": "flagged_review",
+      "rationale": "Both mention 'report' and 'Arjun' and have the same recipient, but the actual deliverables differ. Owner match fails (Divya vs Raghav). Keyword overlap is moderate. Score should land in the 0.40–0.69 uncertain band — flag but do not merge.",
+      "commitments": [
+        {
+          "commitment_id": "tc03_A",
+          "title": "Divya to deliver expense variance report to Arjun",
+          "description": "Divya Rao committed to sending the July expense variance report to Arjun by Wednesday evening.",
+          "owner": "divya.rao@veridian-corp.example",
+          "recipient": "arjun.malhotra@veridian-corp.example",
+          "status": "resolved",
+          "deadline": { "date": "2026-09-23", "time_of_day": "evening" },
+          "source_ids": ["email_t4_3"],
+          "evidence": [{ "source_id": "email_t4_3", "source_type": "email", "verbatim": "Wednesday evening is tight but doable, I'll prioritize it." }],
+          "deadline_history": []
+        },
+        {
+          "commitment_id": "tc03_B",
+          "title": "Raghav to send expense variance report",
+          "description": "Raghav said he would send the expense variance report to Arjun before the board session.",
+          "owner": "raghav.sethi@veridian-corp.example",
+          "recipient": "arjun.malhotra@veridian-corp.example",
+          "status": "pending",
+          "deadline": { "date": "2026-09-24", "time_of_day": "morning" },
+          "source_ids": ["synthetic_email_xyz"],
+          "evidence": [{ "source_id": "synthetic_email_xyz", "source_type": "email", "verbatim": "I'll get you the expense variance report before the board session." }],
+          "deadline_history": []
+        }
+      ],
+      "assertions": {
+        "score_gte": 0.40,
+        "score_lt": 0.70,
+        "not_merged": true,
+        "flagged": true
+      }
+    },
+
+    {
+      "test_id": "TC-04",
+      "label": "NOT_DUPLICATE — similar words, completely different people and tasks",
+      "expected_tier": "NOT_DUPLICATE",
+      "expected_action": "kept_separate",
+      "rationale": "Both mention 'call' and 'confirm', but one is the Mumbai lease action and one is the Meridian call. Different owners, different recipients, different deadlines far apart. Only keyword overlap is partial — score stays well below 0.40.",
+      "commitments": [
+        {
+          "commitment_id": "tc04_A",
+          "title": "Mumbai office lease renewal needs authorized signature",
+          "description": "An authorized person must sign the Mumbai office lease renewal by Friday 25 September.",
+          "owner": null,
+          "recipient": null,
+          "status": "unclear_ownership",
+          "deadline": { "date": "2026-09-25", "time_of_day": "EOD" },
+          "ownership_unclear": true,
+          "source_ids": ["email_t5_1"],
+          "evidence": [{ "source_id": "email_t5_1", "source_type": "email", "verbatim": "Reminder: the Mumbai office lease renewal requires an authorized signature by Friday." }],
+          "deadline_history": []
+        },
+        {
+          "commitment_id": "tc04_B",
+          "title": "Arjun to confirm Meridian Logistics call time with Priya",
+          "description": "Arjun needs to confirm the rescheduled call with Priya Nair at Meridian Logistics.",
+          "owner": "arjun.malhotra@veridian-corp.example",
+          "recipient": "priya.nair@meridianlogistics.example",
+          "status": "resolved",
+          "deadline": { "date": "2026-09-23", "time_of_day": "15:00" },
+          "ownership_unclear": false,
+          "source_ids": ["email_t3_5"],
+          "evidence": [{ "source_id": "email_t3_5", "source_type": "email", "verbatim": "Yes, confirmed, see you at 3." }],
+          "deadline_history": []
+        }
+      ],
+      "assertions": {
+        "score_lt": 0.40,
+        "output_count": 2
+      }
+    },
+
+    {
+      "test_id": "TC-05",
+      "label": "TRUE_DUPLICATE — voice note repeats an already-known commitment",
+      "expected_tier": "HIGH_CONFIDENCE",
+      "expected_action": "auto_merged",
+      "rationale": "Voice Note 1 mentions the vendor list commitment. This is the same commitment as tc01_A: same owner (Arjun), same recipient (Raghav), same keywords (vendor, list, send), deadline within 1 day. Should auto-merge.",
+      "commitments": [
+        {
+          "commitment_id": "tc05_A",
+          "title": "Send vendor list to Raghav",
+          "description": "Arjun promised to send the updated vendor list to Raghav.",
+          "owner": "arjun.malhotra@veridian-corp.example",
+          "recipient": "raghav.sethi@veridian-corp.example",
+          "status": "overdue",
+          "deadline": { "date": "2026-09-23", "time_of_day": "morning" },
+          "source_ids": ["email_t1_4"],
+          "evidence": [{ "source_id": "email_t1_4", "source_type": "email", "verbatim": "will send by tomorrow (Wednesday) morning for sure." }],
+          "deadline_history": []
+        },
+        {
+          "commitment_id": "tc05_B",
+          "title": "Get vendor list to Raghav — personal reminder",
+          "description": "Need to get Raghav that vendor list, possibly slipping to tomorrow morning.",
+          "owner": "arjun.malhotra@veridian-corp.example",
+          "recipient": "raghav.sethi@veridian-corp.example",
+          "status": "pending",
+          "deadline": { "date": "2026-09-22", "time_of_day": "morning" },
+          "source_ids": ["vn_001"],
+          "evidence": [{ "source_id": "vn_001", "source_type": "voice_note", "verbatim": "need to get Raghav that vendor list, I think I said today but it might slip to tomorrow morning." }],
+          "deadline_history": []
+        }
+      ],
+      "assertions": {
+        "score_gte": 0.70,
+        "preferred_status": "overdue",
+        "preferred_deadline_date": "2026-09-23",
+        "merged_source_ids": ["email_t1_4", "vn_001"]
+      }
+    }
+
+  ]
+}

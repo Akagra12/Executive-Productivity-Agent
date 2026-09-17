@@ -1,0 +1,291 @@
+{
+  "_source": "Assignment 1 Data Pack — Email Threads, Section 3. 5 threads × 5 emails each. Verbatim from PDF.",
+  "threads": [
+    {
+      "thread_id": "thread_001",
+      "subject": "Vendor List",
+      "emails": [
+        {
+          "email_id": "email_t1_1",
+          "sequence": 1,
+          "date": "2026-09-21",
+          "time": "09:50",
+          "timezone": "Asia/Kolkata",
+          "from": "raghav.sethi@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Following up from the sync — can you send the updated vendor list today?"
+        },
+        {
+          "email_id": "email_t1_2",
+          "sequence": 2,
+          "date": "2026-09-21",
+          "time": "17:40",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["raghav.sethi@veridian-corp.example"],
+          "body": "Running behind, will send first thing tomorrow morning instead."
+        },
+        {
+          "email_id": "email_t1_3",
+          "sequence": 3,
+          "date": "2026-09-22",
+          "time": "09:15",
+          "timezone": "Asia/Kolkata",
+          "from": "raghav.sethi@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "No worries, whenever you get a chance today works."
+        },
+        {
+          "email_id": "email_t1_4",
+          "sequence": 4,
+          "date": "2026-09-22",
+          "time": "18:30",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["raghav.sethi@veridian-corp.example"],
+          "body": "Sorry, got pulled into board prep — will send by tomorrow (Wednesday) morning for sure."
+        },
+        {
+          "email_id": "email_t1_5",
+          "sequence": 5,
+          "date": "2026-09-23",
+          "time": "08:45",
+          "timezone": "Asia/Kolkata",
+          "from": "raghav.sethi@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Just checking — still good for this morning?"
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_002",
+      "subject": "Q3 Campaign Deck",
+      "emails": [
+        {
+          "email_id": "email_t2_1",
+          "sequence": 1,
+          "date": "2026-09-21",
+          "time": "11:00",
+          "timezone": "Asia/Kolkata",
+          "from": "neha.kapoor@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Deck's coming together, still targeting Wednesday for your review."
+        },
+        {
+          "email_id": "email_t2_2",
+          "sequence": 2,
+          "date": "2026-09-22",
+          "time": "16:15",
+          "timezone": "Asia/Kolkata",
+          "from": "neha.kapoor@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Heads up — shifting the review to Thursday morning instead of Wednesday, need one more day on the data slides."
+        },
+        {
+          "email_id": "email_t2_3",
+          "sequence": 3,
+          "date": "2026-09-23",
+          "time": "10:00",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["neha.kapoor@veridian-corp.example"],
+          "body": "Understood, Thursday morning works. What time exactly?"
+        },
+        {
+          "email_id": "email_t2_4",
+          "sequence": 4,
+          "date": "2026-09-23",
+          "time": "10:20",
+          "timezone": "Asia/Kolkata",
+          "from": "neha.kapoor@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Let's say 9:30 AM Thursday, before your board prep block."
+        },
+        {
+          "email_id": "email_t2_5",
+          "sequence": 5,
+          "date": "2026-09-24",
+          "time": "08:00",
+          "timezone": "Asia/Kolkata",
+          "from": "neha.kapoor@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Deck is ready, attaching the draft ahead of our 9:30 review."
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_003",
+      "subject": "Call Reschedule",
+      "emails": [
+        {
+          "email_id": "email_t3_1",
+          "sequence": 1,
+          "date": "2026-09-21",
+          "time": "13:00",
+          "timezone": "Asia/Kolkata",
+          "from": "priya.nair@meridianlogistics.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Our scheduled call this week got bumped from our side — can you propose a new time? We're flexible Tuesday–Thursday afternoons."
+        },
+        {
+          "email_id": "email_t3_2",
+          "sequence": 2,
+          "date": "2026-09-22",
+          "time": "15:00",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["priya.nair@meridianlogistics.example"],
+          "body": "Apologies for the delay — how about Wednesday 3:00 PM?"
+        },
+        {
+          "email_id": "email_t3_3",
+          "sequence": 3,
+          "date": "2026-09-22",
+          "time": "17:45",
+          "timezone": "Asia/Kolkata",
+          "from": "priya.nair@meridianlogistics.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Wednesday 3 PM works on our end, confirmed."
+        },
+        {
+          "email_id": "email_t3_4",
+          "sequence": 4,
+          "date": "2026-09-23",
+          "time": "13:30",
+          "timezone": "Asia/Kolkata",
+          "from": "priya.nair@meridianlogistics.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Quick check — still on for 3 PM today?"
+        },
+        {
+          "email_id": "email_t3_5",
+          "sequence": 5,
+          "date": "2026-09-23",
+          "time": "14:00",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["priya.nair@meridianlogistics.example"],
+          "body": "Yes, confirmed, see you at 3."
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_004",
+      "subject": "Expense Variance Report",
+      "emails": [
+        {
+          "email_id": "email_t4_1",
+          "sequence": 1,
+          "date": "2026-09-21",
+          "time": "14:30",
+          "timezone": "Asia/Kolkata",
+          "from": "divya.rao@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Starting on the July variance numbers, targeting Thursday morning for board prep as discussed."
+        },
+        {
+          "email_id": "email_t4_2",
+          "sequence": 2,
+          "date": "2026-09-22",
+          "time": "09:00",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["divya.rao@veridian-corp.example"],
+          "body": "Actually, can I get it by Wednesday evening instead? Want time to review before Thursday."
+        },
+        {
+          "email_id": "email_t4_3",
+          "sequence": 3,
+          "date": "2026-09-22",
+          "time": "09:40",
+          "timezone": "Asia/Kolkata",
+          "from": "divya.rao@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Wednesday evening is tight but doable, I'll prioritize it."
+        },
+        {
+          "email_id": "email_t4_4",
+          "sequence": 4,
+          "date": "2026-09-23",
+          "time": "18:00",
+          "timezone": "Asia/Kolkata",
+          "from": "divya.rao@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "Report attached, sent as promised."
+        },
+        {
+          "email_id": "email_t4_5",
+          "sequence": 5,
+          "date": "2026-09-23",
+          "time": "18:10",
+          "timezone": "Asia/Kolkata",
+          "from": "arjun.malhotra@veridian-corp.example",
+          "to": ["divya.rao@veridian-corp.example"],
+          "body": "Got it, thank you — exactly what I needed before tomorrow."
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_005",
+      "subject": "Mumbai Office Lease Renewal",
+      "emails": [
+        {
+          "email_id": "email_t5_1",
+          "sequence": 1,
+          "date": "2026-09-21",
+          "time": "10:15",
+          "timezone": "Asia/Kolkata",
+          "from": "facilities@veridian-corp.example",
+          "to": ["all-staff@veridian-corp.example"],
+          "body": "Reminder: the Mumbai office lease renewal requires an authorized signature by Friday, 25 September."
+        },
+        {
+          "email_id": "email_t5_2",
+          "sequence": 2,
+          "date": "2026-09-22",
+          "time": "11:00",
+          "timezone": "Asia/Kolkata",
+          "from": "raghav.sethi@veridian-corp.example",
+          "to": [
+            "arjun.malhotra@veridian-corp.example",
+            "divya.rao@veridian-corp.example"
+          ],
+          "body": "Following up from the sync — has anyone confirmed who's signing off on the Mumbai renewal? Don't think it's been assigned."
+        },
+        {
+          "email_id": "email_t5_3",
+          "sequence": 3,
+          "date": "2026-09-23",
+          "time": "09:30",
+          "timezone": "Asia/Kolkata",
+          "from": "divya.rao@veridian-corp.example",
+          "to": [
+            "raghav.sethi@veridian-corp.example",
+            "arjun.malhotra@veridian-corp.example"
+          ],
+          "body": "Not on my end — I believe this typically sits with Facilities directly, not us."
+        },
+        {
+          "email_id": "email_t5_4",
+          "sequence": 4,
+          "date": "2026-09-24",
+          "time": "16:00",
+          "timezone": "Asia/Kolkata",
+          "from": "facilities@veridian-corp.example",
+          "to": ["all-staff@veridian-corp.example"],
+          "body": "Second reminder: signature is still pending. Deadline is Friday, 25 September, end of day."
+        },
+        {
+          "email_id": "email_t5_5",
+          "sequence": 5,
+          "date": "2026-09-24",
+          "time": "16:45",
+          "timezone": "Asia/Kolkata",
+          "from": "raghav.sethi@veridian-corp.example",
+          "to": ["arjun.malhotra@veridian-corp.example"],
+          "body": "This is now one day out and still unowned — can you confirm who's handling it?"
+        }
+      ]
+    }
+  ]
+}
