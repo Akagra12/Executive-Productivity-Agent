@@ -6,7 +6,22 @@ deadline-intelligent daily action brief.
 
 **Assignment:** AIONOS Agentic AI Factory — Assignment 1  
 **Target executive:** Arjun Malhotra, VP Product & Strategy, Veridian Corp  
-**GitHub:** https://github.com/Akagra12/Executive-Productivity-Agent
+**GitHub Repository:** https://github.com/Akagra12/Executive-Productivity-Agent  
+
+---
+
+## 🌐 Live Hosted Prototype
+
+Reviewers can open, test, and evaluate the live cloud deployment immediately:
+
+| Component | Platform | Live URL |
+|---|---|---|
+| **Web Dashboard** | **Vercel** | **[https://executive-productivity-agent.vercel.app](https://executive-productivity-agent.vercel.app/)** |
+| **Backend REST API** | **Render** | **[https://executive-productivity-agent-vxek.onrender.com](https://executive-productivity-agent-vxek.onrender.com/)** |
+| **API Health Check** | Render | `GET` [/api/health](https://executive-productivity-agent-vxek.onrender.com/api/health) |
+| **Simulated Daily Brief** | Render | `GET` [/api/brief?date=2026-09-23](https://executive-productivity-agent-vxek.onrender.com/api/brief?date=2026-09-23) |
+
+> ⏳ **Note on Render Free Tier:** If inactive, Render puts free web services to sleep. The very first request to the live frontend or API may take ~30–50 seconds to spin up the container. Subsequent requests are instant.
 
 ---
 
@@ -93,39 +108,6 @@ bash start.sh
 
 > These scripts only run `npm install` and the standard start commands.
 > They do not modify any files or install global packages.
-
----
-
-## Live Cloud Deployment (Render + Vercel)
-
-You can deploy this full-stack project for free using **Render** (Backend) and **Vercel** (Frontend).
-
-### 1. Deploy Backend on Render
-1. Create a new **Web Service** on [Render](https://dashboard.render.com) connected to your GitHub repo.
-2. Configure settings:
-   - **Root Directory:** `server`
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-   - **Instance Type:** `Free`
-3. Under **Environment Variables**, add:
-   - `DEMO_DATE` = `2026-09-23`
-   - `CORS_ORIGIN` = `*`
-   - `GEMINI_API_KEY` = *(Optional: your API key)*
-   - **Health Check Path:** `/api/health`
-4. Deploy and copy your service URL (e.g., `https://your-backend.onrender.com`).
-
-> **Note on Render Free Tier:** Render spins down free services after 15 minutes of inactivity. The very first request after sleep takes 30–50 seconds to boot up.
-
-### 2. Deploy Frontend on Vercel
-1. Create a new **Project** on [Vercel](https://vercel.com) from your GitHub repo.
-2. Configure settings:
-   - **Framework Preset:** `Vite`
-   - **Root Directory:** `Client`
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-3. Under **Environment Variables**, add:
-   - `VITE_API_URL` = `https://your-backend.onrender.com` *(your Render URL from step 1)*
-4. Click **Deploy**.
 
 ---
 

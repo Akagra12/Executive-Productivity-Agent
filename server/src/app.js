@@ -61,6 +61,27 @@ app.use(express.json({ limit: "2mb" }));
 
 // ── Routes ──────────────────────────────────────────────────────────────────
 
+// Root endpoint: API directory and links
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    service: "AIONOS Executive Productivity Agent API",
+    version: "1.0.0",
+    executive: "Arjun Malhotra (VP Product & Strategy, Veridian Corp)",
+    links: {
+      health: "/api/health",
+      brief: "/api/brief?date=2026-09-23",
+      commitments: "/api/commitments?date=2026-09-23",
+      classification: "/api/commitments/classify?date=2026-09-23",
+      deduplicate: "/api/deduplicate?date=2026-09-23",
+      ingest: "/api/ingest",
+      chat_status: "/api/chat/status",
+    },
+    live_frontend: "https://executive-productivity-agent.vercel.app",
+    github: "https://github.com/Akagra12/Executive-Productivity-Agent",
+  });
+});
+
 // All agent API routes live under /api
 app.use("/api/health",      healthRouter);
 app.use("/api/ingest",      ingestRouter);
@@ -69,8 +90,6 @@ app.use("/api/deduplicate", deduplicateRouter);
 app.use("/api/brief",       briefRouter);
 app.use("/api/query",       queryRouter);
 app.use("/api/chat",        chatRouter);
-
-
 
 // ── 404 catch-all ───────────────────────────────────────────────────────────
 // Catches any request that didn't match a registered route
