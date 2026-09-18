@@ -224,7 +224,15 @@ async function runFilterTests() {
       "HTTP invalid role returns descriptive error message"
     );
   } catch (err) {
-    console.error("  [HTTP SUITE ERROR] Server may need to be restarted: ", err.message);
+    console.warn(
+      "\n  [HTTP SUITE SKIPPED] The backend server is not running on http://localhost:3001."
+    );
+    console.warn(
+      "  Start the server with `npm start` in the server/ directory, then re-run this file."
+    );
+    console.warn(
+      "  Service-level tests above (Suite 1) do not need a running server and are always valid.\n"
+    );
   }
 
   console.log("\n================================================================");
