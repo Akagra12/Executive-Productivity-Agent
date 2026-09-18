@@ -96,6 +96,39 @@ bash start.sh
 
 ---
 
+## Live Cloud Deployment (Render + Vercel)
+
+You can deploy this full-stack project for free using **Render** (Backend) and **Vercel** (Frontend).
+
+### 1. Deploy Backend on Render
+1. Create a new **Web Service** on [Render](https://dashboard.render.com) connected to your GitHub repo.
+2. Configure settings:
+   - **Root Directory:** `server`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+   - **Instance Type:** `Free`
+3. Under **Environment Variables**, add:
+   - `DEMO_DATE` = `2026-09-23`
+   - `CORS_ORIGIN` = `*`
+   - `GEMINI_API_KEY` = *(Optional: your API key)*
+   - **Health Check Path:** `/api/health`
+4. Deploy and copy your service URL (e.g., `https://your-backend.onrender.com`).
+
+> **Note on Render Free Tier:** Render spins down free services after 15 minutes of inactivity. The very first request after sleep takes 30–50 seconds to boot up.
+
+### 2. Deploy Frontend on Vercel
+1. Create a new **Project** on [Vercel](https://vercel.com) from your GitHub repo.
+2. Configure settings:
+   - **Framework Preset:** `Vite`
+   - **Root Directory:** `Client`
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+3. Under **Environment Variables**, add:
+   - `VITE_API_URL` = `https://your-backend.onrender.com` *(your Render URL from step 1)*
+4. Click **Deploy**.
+
+---
+
 ## Environment variables
 
 All variables are documented in [`server/.env.example`](./server/.env.example).

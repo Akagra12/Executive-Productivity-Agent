@@ -22,7 +22,7 @@ const app = require("./app");
 const PORT = process.env.PORT || 3001;
 
 // Start the HTTP server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`\n✅  AIONOS server is running`);
   console.log(`   Local:   http://localhost:${PORT}`);
   console.log(`   Health:  http://localhost:${PORT}/api/health\n`);

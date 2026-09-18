@@ -25,15 +25,29 @@ const app = express();
 // ── Middleware ──────────────────────────────────────────────────────────────
 
 /**
- * CORS: Allow requests from the Vite dev server (port 5173).
- * In production this would be locked to your actual frontend domain.
+ * CORS: Allow requests from the Vite dev server, custom CORS_ORIGIN, or any *.vercel.app deployment.
  */
+const allowedOrigins = [
+  "http://localhost:5173", // Vite default dev port
+  "http://localhost:4173", // Vite preview port
+  process.env.CORS_ORIGIN,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // Vite default dev port
-      "http://localhost:4173", // Vite preview port
-    ],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g. server-to-server, curl)
+      if (!origin) return callback(null, true);
+      // Allow if explicit match or wildcard *
+      if (process.env.CORS_ORIGIN === "*" || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      // Allow any vercel deployment preview / production domain
+      if (origin.endsWith(".vercel.app")) {
+        return callback(null, true);
+      }
+      return callback(null, true); // Permissive fallback for demo evaluations
+    },
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })

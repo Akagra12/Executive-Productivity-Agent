@@ -19,6 +19,7 @@ import {
   ListFilter,
   AlertCircle
 } from 'lucide-react';
+import { API_BASE } from './config/api';
 import './App.css';
 
 export default function App() {
@@ -36,8 +37,8 @@ export default function App() {
     setIsLoading(true);
     try {
       const [briefRes, classifyRes] = await Promise.all([
-        fetch(`/api/brief?date=${selectedDate}`),
-        fetch(`/api/commitments/classify?date=${selectedDate}`),
+        fetch(`${API_BASE}/api/brief?date=${selectedDate}`),
+        fetch(`${API_BASE}/api/commitments/classify?date=${selectedDate}`),
       ]);
 
       const [briefJson, classifyJson] = await Promise.all([

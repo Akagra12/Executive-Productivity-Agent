@@ -11,6 +11,7 @@ import {
   Bot,
   Zap
 } from 'lucide-react';
+import { API_BASE } from '../config/api';
 
 export default function QueryBar({ onSelectCommitment, selectedDate }) {
   const [query, setQuery] = useState('');
@@ -33,7 +34,7 @@ export default function QueryBar({ onSelectCommitment, selectedDate }) {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: q, date: selectedDate }),

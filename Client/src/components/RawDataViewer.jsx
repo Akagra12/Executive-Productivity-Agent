@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Database, FileText, Mail, Calendar, Mic, RefreshCw } from 'lucide-react';
+import { API_BASE } from '../config/api';
 
 export default function RawDataViewer() {
   const [ingestData, setIngestData] = useState(null);
@@ -10,7 +11,7 @@ export default function RawDataViewer() {
     async function loadData() {
       setLoading(true);
       try {
-        const res = await fetch('/api/ingest');
+        const res = await fetch(`${API_BASE}/api/ingest`);
         const data = await res.json();
         setIngestData(data);
       } catch (err) {

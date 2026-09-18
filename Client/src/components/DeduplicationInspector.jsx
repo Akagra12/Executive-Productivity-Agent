@@ -9,6 +9,7 @@ import {
   ShieldCheck, 
   Activity 
 } from 'lucide-react';
+import { API_BASE } from '../config/api';
 
 export default function DeduplicationInspector({ selectedDate }) {
   const [dedupData, setDedupData] = useState(null);
@@ -19,7 +20,7 @@ export default function DeduplicationInspector({ selectedDate }) {
     async function loadDedup() {
       setLoading(true);
       try {
-        const res = await fetch(`/api/deduplicate?date=${selectedDate}`);
+        const res = await fetch(`${API_BASE}/api/deduplicate?date=${selectedDate}`);
         const data = await res.json();
         setDedupData(data);
       } catch (err) {
